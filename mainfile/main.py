@@ -4,6 +4,9 @@ from game import Game
 from const import *
 import sys,os
 
+path = "" #  <-- Path of your directory until /Chess_
+os.chdir(path)
+
 class Main:
     def __init__(self):
         pygame.init()
