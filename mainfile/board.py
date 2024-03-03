@@ -137,33 +137,6 @@ class Board:
                         break
                     pm_row += row_in
                     pm_col += col_in
-            # for se in moveset:
-            #     row_in, col_in = se
-            #     pm_row = row + row_in
-            #     pm_col = col + col_in
-            #     while True:
-            #         if Square.in_range(pm_row,pm_col):
-            #             initial = Square(row,col)
-            #             f_piece = self.squares[pm_row][pm_col].piece
-            #             final = Square(pm_row,pm_col,f_piece)
-            #             move = Move(initial,final)
-            #             if self.squares[pm_row][pm_col].isEmpty():
-            #                 if bool:
-            #                     if not self.in_check(piece,move):
-            #                         piece.add_move(move)
-            #                 else:
-            #                     piece.add_move(move)
-            #             elif self.squares[pm_row][pm_col].isRival(piece.color):
-            #                 if bool:
-            #                     if not self.in_check(piece,move):
-            #                         piece.add_capture(move)
-            #                 else:
-            #                     piece.add_capture(move)
-            #                 break
-            #             elif self.squares[pm_row][pm_col].isSameTeam(piece.color):
-            #                 break
-            #         else:break
-            #         pm_row,pm_col = pm_row+row_in,pm_col+col_in
 
         def king_moves():
             possible_moves = [(row+1,col), (row,col+1), (row,col-1), (row-1,col), (row+1,col+1), (row-1,col-1), (row+1,col-1), (row-1,col+1)]
@@ -196,7 +169,6 @@ class Board:
                         if not left_rook.moved:
                             for c in castle_lcheck_range:
                                 if self.squares[row][c].has_piece():break
-                                #elif self.squares[row,c].in_check():break
                                 if c == e_point:
                                     piece.left_rook = left_rook
                                     initial = Square(row,0)
@@ -223,7 +195,6 @@ class Board:
                         if not right_rook.moved:
                             for c in castle_rcheck_range:
                                 if self.squares[row][c].has_piece():break
-                                #elif self.squares[row,c].in_check():break
                                 if c == 6:
                                     piece.right_rook = right_rook
 
@@ -399,8 +370,6 @@ class Board:
         c = False
         if self.curr_move_check(p_move,piece.color):
             c = True
-        # if self.pin_move_check(piece.color):
-        #     c = True
         return c
     
     def curr_move_check(self,moves,color):
@@ -419,9 +388,7 @@ class Board:
                     m = temp_board.calcmoves(p,r,c,bool=False)
                     for i in m:
                         if isinstance(temp_board.squares[i.final.row][i.final.col].piece,King):
-                            # print(color,"in check")
                             return True
-        # print(color,"not in check")
         return False
 
     def valid_options_move(self,color):
@@ -433,9 +400,7 @@ class Board:
                     m = temp_board.calcmoves(p,r,c,bool=True)
                     for i in m:
                         if i:
-                            # print("Yes",color,"has valid moves")
                             return True
-        # print("No",color,"does not have valid moves")
         return False
                         
     def checkmate(self,color):
