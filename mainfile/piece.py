@@ -9,7 +9,6 @@ class Piece:
             value_sign = -1 if color=='white' else 1
         self.value = value * value_sign
         self.texture = texture
-        # self.tot_moves = []
         self.moves = []
         self.captures = []
         self.moved = False
@@ -17,10 +16,7 @@ class Piece:
         self.texture_rect = texture_rect
     
     def set_texture(self,size=80):
-        # if size==60:
-        self.texture = os.path.join(f'pieceimg/img{size}/{self.color}__{self.name}.png')
-        # else:
-        #     self.texture = os.path.join(f'pieceimg/{self.color}-{self.name}.png')
+        self.texture = os.path.join(f'pieceimg/img{size}/{self.color}__{self.name}.png')        
     
     def add_move(self,move):
         self.moves.append(move)
