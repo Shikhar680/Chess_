@@ -38,7 +38,3 @@ class Config:
         gray = Theme((120,119,118),(86,85,84),(99,126,143),(82,102,128),"#C8CCAF","#668348")
 
         self.themes = [green,brown, blue, gray]
-
-
-
-# (237,238,209)
