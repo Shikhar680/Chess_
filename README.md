@@ -1,5 +1,8 @@
 # Chess
 
+Important note  --> Add path in main.py then run main.py
+-
+
 Chess using pygame 
 -
 
