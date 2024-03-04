@@ -115,7 +115,11 @@ class Start:
                         if board.validate_move(dragger.piece, move):
 
                             capture1 = board.squares[released_row][released_col].has_piece()
-                            game.sound_effect(capture=capture1,check=check1)
+                            promote1 = False
+                            if isinstance(dragger.piece,Pawn):
+                                if released_row == 0 or released_row == 7:
+                                    promote1 = True
+                            game.sound_effect(capture=capture1,check=check1,promote = promote1)
                             if dragger.piece.color=="white":
                                 print(game.move_c,end=". ")
                                 moveprint = board.asc_move(dragger.piece,move,self.play_as)

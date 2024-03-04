@@ -104,7 +104,7 @@ class Game:
 
     def sound_effect(self,check=False,promote=False,castle=False,capture=False):
         if check:
-            self.config.check_sound.play()
+            return
         elif promote:
             self.config.promote_sound.play()
         elif castle:

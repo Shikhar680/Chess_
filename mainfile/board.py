@@ -425,18 +425,18 @@ class Board:
             self.squares[lastmove.final.row][lastmove.final.col].piece.en_passant = False
 
     def set_king_check(self,np):
-        if self.king_in_check(np):
             for ro in range(rows):
                 for col in range(cols):
                     if self.squares[ro][col].isSameTeam(np):
                         if isinstance(self.squares[ro][col].piece,King):
-                            self.squares[ro][col].piece.check = True
-        else:
-            for ro in range(rows):
-                for col in range(cols):
-                    if self.squares[ro][col].isSameTeam(np):
-                        if isinstance(self.squares[ro][col].piece,King):
-                            self.squares[ro][col].piece.check = False
+                            if self.king_in_check(np):
+                                self.squares[ro][col].piece.check = True
+                                s = Sound(os.path.join('sounds/check.mp3'))
+                                s.play()
+                            else:
+                                self.squares[ro][col].piece.check = False
+            
+                            
 
     def check_draw(self):
         white_pieces = []
